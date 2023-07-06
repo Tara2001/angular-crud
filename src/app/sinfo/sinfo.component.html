@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="customers">
+
+        <tr>
+            <th>FNAME</th>
+            <th>LNAME</th>
+            <th>LOCATION</th>
+            <th>CONTACT</th>
+            <th>EMAIL</th>
+            <th>ACTION</th>
+        </tr>
+
+        <tr *ngFor="let data of tdata; let i=index">
+            <td>{{data.fname}}</td>
+            <td>{{data.lname}}</td>
+            <td>{{data.location}}</td>
+            <td>{{data.contact}}</td>
+            <td>{{data.email}}</td>
+            <td>
+        <tr class="btn" type="button" (click)="update(data.id)"><i class="fa fa-pencil-square-o"
+                style="color: grey;"></i></tr>
+        <tr class="btn" type="button" (click)="delete(data.id)"><i class="fa fa-trash-o" style="color: red;"></i></tr>
+        </td>
+        </tr>
+
+    </table>
+</body>
+
+</html>

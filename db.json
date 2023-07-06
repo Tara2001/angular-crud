@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "fname": "pranav",
+      "lname": "telavane",
+      "location": "kalyan",
+      "contact": "9879065323",
+      "email": "pranavtv@gmail.com",
+      "id": 2
+    },
+    {
+      "fname": "ukmy",
+      "lname": "name",
+      "location": "uk",
+      "contact": "9747236454",
+      "email": "ukmyname@gmail.com",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
