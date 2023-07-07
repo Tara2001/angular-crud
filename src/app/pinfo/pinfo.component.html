@@ -8,25 +8,83 @@
 </head>
 
 <body>
-  <div>
+  <div class="fluid-container">
     <form [formGroup]="information">
-      <label for="fname">First Name</label>
-      <input type="text" id="fname" formControlName="fname" name="firstname" placeholder="Tara">
 
-      <label for="lname">Last Name</label>
-      <input type="text" id="lname" formControlName="lname" name="lastname" placeholder="Singh">
+      <p class="container">
+        <label for="fname">First Name</label>
+        <input type="text" formControlName="fname" class="form-control"
+          [ngClass]="{'invalid' : submitted && s.fname.errors}" />
+        <span *ngIf="submitted && s.fname.errors" class="text-danger">
+          <span *ngIf="s.fname.errors.required">
+            Firstname can't be blank !
+          </span>
+          <span *ngIf="s.fname.errors.pattern">
+            Please enter correct value !
+          </span>
+        </span>
+      </p>
 
-      <label for="location">Location</label>
-      <input type="text" id="location" formControlName="location" name="location" placeholder="Mumbai">
+      <p class="container">
+        <label for="lname">Last Name</label>
+        <input type="text" formControlName="lname" class="form-control"
+          [ngClass]="{'invalid' : submitted && s.lname.errors}">
+        <span *ngIf="submitted && s.lname.errors" class="text-danger">
+          <span *ngIf="s.lname.errors.required">
+            Lastname can't be blank !
+          </span>
+          <span *ngIf="s.lname.errors.pattern">
+            Please enter correct value !
+          </span>
+        </span>
+      </p>
 
-      <label for="contact">Contact</label>
-      <input type="text" id="contact" formControlName="contact" name="contact" maxlength="10" placeholder="0000000000">
+      <p class="container">
+        <label for="location">Location</label>
+        <input type="text" formControlName="location" class="form-control"
+          [ngClass]="{'invalid' : submitted && s.location.errors}">
+        <span *ngIf="submitted && s.location.errors" class="text-danger">
+          <span *ngIf="s.location.errors.required">
+            Location can't be blank !
+          </span>
+          <span *ngIf="s.location.errors.pattern">
+            Please enter correct value !
+          </span>
+        </span>
+      </p>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" formControlName="email" name="email" placeholder="abc@gmail.com">
+      <p class="container">
+        <label for="contact">Contact</label>
+        <input type="text" formControlName="contact" class="form-control"
+          [ngClass]="{'invalid' : submitted && s.contact.errors}" maxlength="10">
+        <span *ngIf="submitted && s.contact.errors" class="text-danger">
+          <span *ngIf="s.contact.errors.required">
+            Contact can't be blank !
+          </span>
+          <span *ngIf="s.contact.errors.pattern">
+            Must contain only numbers !
+          </span>
+        </span>
+      </p>
 
-      <input type="submit" *ngIf="cond == false" value="Submit" (click)="submit()">
-      <input type="submit" *ngIf="cond == true" value="Update" (click)="submit()">
+      <p class="container">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="form-control"
+          [ngClass]="{'invalid' : submitted && s.email.errors}">
+        <span *ngIf="submitted && s.email.errors" class="text-danger">
+          <span *ngIf="s.email.errors.required">
+            Email can't be blank !
+          </span>
+          <span *ngIf="s.email.errors.pattern">
+            Please enter correct sequence !
+          </span>
+        </span>
+      </p>
+
+      <p class="container">
+        <input type="submit" *ngIf="cond == false" value="Submit" (click)="submit()">
+        <input type="submit" *ngIf="cond == true" value="Update" (click)="submit()">
+      </p>
     </form>
   </div>
 </body>
