@@ -15,13 +15,41 @@
       "contact": "9747236454",
       "email": "ukmyname@gmail.com",
       "id": 3
+    },
+    {
+      "fname": "GTRG",
+      "lname": "grfg",
+      "location": "bgf",
+      "contact": "4565980868",
+      "email": "vgfd@gmail.com",
+      "items": [
+        {
+          "hobbies": "singing"
+        },
+        {
+          "hobbies": "cricket"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "fname": "TARA",
+      "lname": "bairagi",
+      "location": "mumbai",
+      "contact": "9876543423",
+      "email": "tarab@gmail.com",
+      "items": [
+        {
+          "hobbies": "dancing"
+        }
+      ],
+      "id": 8
     }
   ],
-  "comments": [
+  "logins": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "loginid": "admin@gmail.com",
+      "password": "admin"
     }
   ],
   "profile": {

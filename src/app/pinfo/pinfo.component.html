@@ -12,9 +12,9 @@
     <form [formGroup]="information">
 
       <p class="container">
-        <label for="fname">First Name</label>
-        <input type="text" formControlName="fname" class="form-control"
-          [ngClass]="{'invalid' : submitted && s.fname.errors}" />
+        <label>First Name</label>
+        <input type="text" formControlName="fname" class="form-control" oninput="this.value = this.value.toUpperCase()"
+          [ngClass]="{'invalid' : submitted && s.fname.errors}" maxlength="20">
         <span *ngIf="submitted && s.fname.errors" class="text-danger">
           <span *ngIf="s.fname.errors.required">
             Firstname can't be blank !
@@ -26,9 +26,9 @@
       </p>
 
       <p class="container">
-        <label for="lname">Last Name</label>
+        <label>Last Name</label>
         <input type="text" formControlName="lname" class="form-control"
-          [ngClass]="{'invalid' : submitted && s.lname.errors}">
+          [ngClass]="{'invalid' : submitted && s.lname.errors}" maxlength="20">
         <span *ngIf="submitted && s.lname.errors" class="text-danger">
           <span *ngIf="s.lname.errors.required">
             Lastname can't be blank !
@@ -40,9 +40,9 @@
       </p>
 
       <p class="container">
-        <label for="location">Location</label>
+        <label>Location</label>
         <input type="text" formControlName="location" class="form-control"
-          [ngClass]="{'invalid' : submitted && s.location.errors}">
+          [ngClass]="{'invalid' : submitted && s.location.errors}" maxlength="20">
         <span *ngIf="submitted && s.location.errors" class="text-danger">
           <span *ngIf="s.location.errors.required">
             Location can't be blank !
@@ -54,7 +54,7 @@
       </p>
 
       <p class="container">
-        <label for="contact">Contact</label>
+        <label>Contact</label>
         <input type="text" formControlName="contact" class="form-control"
           [ngClass]="{'invalid' : submitted && s.contact.errors}" maxlength="10">
         <span *ngIf="submitted && s.contact.errors" class="text-danger">
@@ -68,7 +68,7 @@
       </p>
 
       <p class="container">
-        <label for="email">Email</label>
+        <label>Email</label>
         <input type="email" formControlName="email" class="form-control"
           [ngClass]="{'invalid' : submitted && s.email.errors}">
         <span *ngIf="submitted && s.email.errors" class="text-danger">
@@ -80,6 +80,56 @@
           </span>
         </span>
       </p>
+
+      <p class="container">
+        <label>Hobbies</label>
+        <span formArrayName="items">
+          <p *ngFor="let item of items.controls; let i = index;">
+            <span [formGroupName]="i">
+              <input class="col-6" type="text" formControlName="hobbies"
+                [ngClass]="{'invalid' : submitted && items.controls[i].get('hobbies').errors}" maxlength="20">
+              <button class="btn btn-danger" type="button" (click)="del(i)"><i class="fa fa-trash"></i></button>
+              <span class="text-danger" *ngIf="submitted && items.controls[i].get('hobbies').errors">
+                <span *ngIf="items.controls[i].get('hobbies').errors.required">
+                  Hobbies can't be blank
+                </span>
+                <span *ngIf="items.controls[i].get('hobbies').errors.pattern">
+                  Hobbies can't be blank !
+                </span>
+              </span>
+            </span>
+          </p>
+          <button class="btn btn-primary" type="button" (click)="addhob()"><i class="fa fa-plus-square"
+              aria-hidden="true"></i></button>
+        </span>
+      </p>
+
+      <!-- <div class="container">
+        <label>Hobbies</label>
+        <div class="row">
+          <div formArrayName="items">
+            <div *ngFor="let item of items.controls; let i = index;">
+              <div [formGroupName]="i">
+                <div class="col"><input class="col-6" type="text" formControlName="hobbies"
+                    [ngClass]="{'invalid' : submitted && s.hobbies.errors}"></div>
+                <div class="col"> <button class="btn btn-danger" type="button"><i class="fa fa-trash"
+                      aria-hidden="true"></i></button>
+                  <button class="btn btn-primary" type="button" (click)="addhob()"><i class="fa fa-plus-square"
+                      aria-hidden="true"></i></button>
+                  <span *ngIf="submitted && s.email.errors" class="text-danger">
+                    <span *ngIf="s.hobbies.errors.required">
+                      Hobbies can't be blank !
+                    </span>
+                    <span *ngIf="s.hobbies.errors.pattern">
+                      Please enter correct sequence !
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
 
       <p class="container">
         <input type="submit" *ngIf="cond == false" value="Submit" (click)="submit()">

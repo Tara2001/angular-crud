@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <form [formGroup]="login">
+            <div class="container">
+                <div class="col-6 mx-auto">
+                    <label>Email:</label>
+                    <input type="email" formControlName="email" class="form-control"><br>
+                </div>
+                <div class="col-6 mx-auto">
+                    <label>Password:</label>
+                    <input type="password" formControlName="password" class="form-control"><br>
+                </div>
+                <div class="col-1 mx-auto">
+                    <input type="submit" value="Submit" (click)="saved()">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

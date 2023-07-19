@@ -7,12 +7,14 @@ import { PinfoComponent } from './pinfo/pinfo.component';
 import { SinfoComponent } from './sinfo/sinfo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PinfoComponent,
-    SinfoComponent
+    SinfoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

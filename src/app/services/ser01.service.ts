@@ -30,4 +30,13 @@ export class Ser01Service {
     debugger
     return this.http.delete("http://localhost:3000/users/" + data)
   }
+
+  // login
+  lgetdata() {
+    return this.http.get("http://localhost:3000/logins")
+  }
+  getToken() {
+    return !!localStorage.getItem("user");
+  }
 }
+

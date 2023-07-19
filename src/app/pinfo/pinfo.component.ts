@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ser01Service } from '../services/ser01.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -16,6 +16,7 @@ export class PinfoComponent implements OnInit {
   tdata: any;
   cond: boolean = false;
   submitted: boolean = false;
+  // items: FormArray;
 
   constructor(
     private entries: FormBuilder,
@@ -25,14 +26,19 @@ export class PinfoComponent implements OnInit {
 
   ngOnInit(): void {
     debugger
+    this.callfunc();
 
     this.information = this.entries.group({
-      fname: ['', [Validators.required]],
+      fname: ['', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]],
       lname: ['', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]],
       location: ['', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]],
       contact: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]]
+      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+      // items: new FormArray([])
+      items: this.entries.array([]),
     })
+
+    this.addhob()
 
     this.route.paramMap.subscribe((params) => {
       debugger
@@ -87,4 +93,29 @@ export class PinfoComponent implements OnInit {
 
   }
 
+  add(): FormGroup {
+    return this.entries.group({
+      hobbies: ['', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]]
+    });
+  }
+
+  get items(): FormArray {
+    return this.information.get('items') as FormArray;
+  }
+
+  addhob() {
+    // this.items = this.information.get('items') as FormArray;
+    this.items.push(this.add());
+  }
+
+  del(i: number) {
+    this.items.removeAt(i);
+  }
+
+  callfunc() {
+    this.services.getdata().subscribe((result: any) => {
+      debugger
+      this.tdata = result;
+    })
+  }
 }

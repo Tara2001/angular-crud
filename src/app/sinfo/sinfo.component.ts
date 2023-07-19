@@ -46,4 +46,35 @@ export class SinfoComponent implements OnInit {
       })
     }
   }
+
+  logout() {
+    debugger
+    localStorage.removeItem('token')
+    this.next.navigateByUrl('login');
+  }
+
+  add() {
+    this.next.navigateByUrl('pinfo');
+  }
+
+  // hobbies 
+  hob(data: any) {
+    debugger
+    var newhob = ''
+    if (data != undefined) {
+
+      data.forEach((element: { hobbies: string; }) => {
+        if (newhob == '') {
+          newhob = element.hobbies;
+        } else {
+          newhob = newhob + ',' + element.hobbies;
+        }
+      });
+      return newhob;
+    }
+    else {
+      return null
+    }
+  }
 }
+
